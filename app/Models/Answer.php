@@ -4,17 +4,20 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class Option extends Model
+class Answer extends Model
 {
     use HasFactory;
 
-    function question(): BelongsTo
+    function quiz()
+    {
+        return $this->belongsTo(Quiz::class);
+    }
+    function question()
     {
         return $this->belongsTo(Question::class);
     }
-    function answers(){
-        return $this->hasMany(Answer::class);
+    function option(){
+        return $this->belongsTo(Option::class);
     }
 }

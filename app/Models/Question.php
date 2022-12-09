@@ -20,4 +20,7 @@ class Question extends Model
     {
         return $this->hasMany(Option::class);
     }
+    function answers(){
+        return $this->hasMany(Option::class);
+    }
 }

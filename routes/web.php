@@ -21,4 +21,4 @@ Route::get('/', function () {
 
 Route::get('quiz', [QuizController::class, 'index'])->name('quiz');
 Route::get('quiz-attempt/{id}', [QuizController::class, 'attempt'])->name('quiz.attempt');
-Route::post('answer', [AnswerController::class, 'store'])->name('answer.store');
+Route::post('score/{quiz_id}', [AnswerController::class, 'store'])->name('quiz.score');
