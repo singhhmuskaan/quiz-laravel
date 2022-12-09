@@ -6,12 +6,15 @@
 <div class="container">
     <div class="row d-flex justify-content-center">
         <div class="col-sm-6">
+            @if($errors->any())
+                <p class="text-danger">{{$errors->first()}}</p>
+            @endif
             <form action="{{route('quiz.score', [$quiz->id])}}" method="post">
                 @csrf
                 <input type="hidden" value="{{$quiz->id}}" name="quiz_id"/>
                 <div class="mb-3">
                     <label for="exampleInputEmail1" class="form-label" >Username</label>
-                    <input type="email" class="form-control" name="username" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    <input type="text" class="form-control" name="username" id="exampleInputEmail1" aria-describedby="emailHelp">
                 </div>
                 <div>
                     @foreach($quiz->questions as $question)

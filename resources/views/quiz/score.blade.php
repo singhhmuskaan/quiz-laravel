@@ -6,6 +6,7 @@
                 <p>Attempted questions: {{$total_answers}} </p>
                 <p>Correct Answers: {{$correct_answers}}</p>
                 <p>Score: {{$percentage}}</p>
+                <a href="{{route('quiz')}}"><p>Home</p></a>
             </div>
         </div>
     </div>

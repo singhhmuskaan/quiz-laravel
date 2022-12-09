@@ -11,6 +11,10 @@ class AnswerController extends Controller
 {
     function store(Request $request){
         $question_ids = $request->get("question_id");
+        $existing = Answer::where('username', $request->get('username'))->where('quiz_id', $request->get('quiz_id'))->exists();
+        if ($existing) {
+            return redirect()->back()->withErrors(['message' => 'You have already attempted this quiz ']);
+        }
         foreach ($question_ids as $question_id){
             $question = Question::find($question_id);
             $option_id = $request->get("answer-{$question_id}");
